@@ -1,8 +1,16 @@
 load("@rules_cc//cc:defs.bzl", "cc_binary")
 
 cc_binary(
-    name="hello_world",
-    srcs=["main.cc"],
+    name = "hello_world",
+    srcs = ["main.cc"],
     visibility = ["//visibility:public"],
-    deps = ["@org_llvm_libcxx//:libcxx"],
+)
+
+cc_binary(
+    name = "hello_world_arm",
+    srcs = ["main.cc"],
+    target_compatible_with = [
+        "@platforms//cpu:arm64",
+    ],
+    visibility = ["//visibility:public"],
 )
