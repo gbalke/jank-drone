@@ -1,0 +1,17 @@
+load("rules.bzl", "xz_decompress")
+
+genrule(
+    name = "rpi_ubuntu_img_xz",
+    srcs = [
+        "@rpi_ubuntu_2404//file",
+        "@coreutils//:bin/readlink",
+    ],
+    outs = ["rpi_ubuntu.img.xz"],
+    cmd = "ln -s $$($(location @coreutils//:bin/readlink) $(location @rpi_ubuntu_2404//file)) $@",
+)
+
+xz_decompress(
+    name = "rpi_ubuntu_img",
+    src = "rpi_ubuntu_img_xz",
+    out = "rpi_ubuntu.img",
+)

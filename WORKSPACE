@@ -54,6 +54,13 @@ nixpkgs_package(
     repository = "@nixpkgs",
 )
 
+nixpkgs_package(
+    name = "coreutils",
+    attribute_path = "coreutils",
+    nix_file_content = "(import <nixpkgs> {})",
+    repository = "@nixpkgs",
+)
+
 load("@rules_cc//cc:repositories.bzl", "rules_cc_dependencies", "rules_cc_toolchains")
 
 rules_cc_dependencies()
