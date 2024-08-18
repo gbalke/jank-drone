@@ -1,4 +1,4 @@
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive", "http_file")
 
 http_archive(
     name = "rules_cc",
@@ -7,6 +7,12 @@ http_archive(
     urls = [
         "https://github.com/bazelbuild/rules_cc/releases/download/0.0.9/rules_cc-0.0.9.tar.gz",
     ],
+)
+
+http_file(
+    name = "rpi_ubuntu_2404",
+    url = "https://cdimage.ubuntu.com/releases/24.04/release/ubuntu-24.04-preinstalled-server-arm64+raspi.img.xz",
+    sha256 = "9b12b0e3a297ac8a0e13aef7cee0902102f3e2b925a0f3acaa28a32cddc73f4f",
 )
 
 # load rules_nixpkgs
